@@ -24,7 +24,7 @@ public class ArticleService {
 		return null;
 	}
 	
-	public Article[] getAriticle(int num) { // 게시물 내용 가져오기
+	public Article getArticle(int num) { // 게시물 내용 가져오기
 		// list에서 num이라는 글 번호를 가진 데이터를 찾아서 리턴
 		Article article = null;
 		
@@ -39,7 +39,7 @@ public class ArticleService {
 			}
 		}
 		
-		return null;
+		return article;
 	}
 	
 	// 글 쓰기를 처리하는 메소드
@@ -79,8 +79,10 @@ public class ArticleService {
 					list[i] = null;
 					break;
 				}
+			} else {
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 }
