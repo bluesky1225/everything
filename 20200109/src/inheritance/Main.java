@@ -8,7 +8,7 @@ public class Main {
 		final int KNIGHT = 1;
 		final int MAGE = 2;
 		// TODO Auto-generated method stub
-/*		Derived d = new Derived();
+		Derived d = new Derived();
 		d.disp();
 		d.print();
 		d.method();
@@ -29,7 +29,11 @@ public class Main {
 		r.attack();
 		r2.attack();
 		r3.attack();
-*/		
+		
+		T t2 = (T)(new Race());
+		
+		
+		
 		System.out.print("유닛을 선택하세요---(1번: 레벨1 나이트    2번: 레벨2 메이지) ");
 				
 		Scanner sc = new Scanner(System.in);
@@ -53,10 +57,10 @@ public class Main {
 		System.out.println("게임에 접속하였습니다.");
 		
 		
-		
+		Knight enemy = new Knight(2, 0, 20, 12, 12);
 		while(true) {
 			
-			
+			break;
 			
 		}
 		
@@ -65,7 +69,7 @@ public class Main {
 		
 		
 		
-		sc.close();
+		//sc.close();
 	}
 
 }
