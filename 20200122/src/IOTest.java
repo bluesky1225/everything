@@ -35,7 +35,7 @@ public class IOTest extends JFrame {
 	
 	public IOTest() {
 		Image img = Toolkit.getDefaultToolkit().getImage("../maxresdefault.jpg");
-		setTitle("Å×½ºÆ®");
+		setTitle("ï¿½×½ï¿½Æ®");
 		setSize(800, 600);
 		setIconImage(img);
 		setLocation(100, 100);
@@ -45,9 +45,9 @@ public class IOTest extends JFrame {
 		jsp = new JScrollPane(jl);
 		//jl.setBackground(Color.BLUE); 		
 		ta = new JTextField(10);
-		jb = new JButton("ÀúÀå");
-		jb2 = new JButton("¿­±â");
-		jb3 = new JButton("Å¬¸®¾î");
+		jb = new JButton("ï¿½ï¿½ï¿½ï¿½");
+		jb2 = new JButton("ï¿½ï¿½ï¿½ï¿½");
+		jb3 = new JButton("Å¬ï¿½ï¿½ï¿½ï¿½");
 		
 		p.setSize(790, 590);
 		jsp.setSize(780, 510);
@@ -75,7 +75,7 @@ public class IOTest extends JFrame {
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e1) {
 				switch(e1.getActionCommand()) {
-				case "ÀúÀå":
+				case "í´ë¦­":
 					String text = jl.getText();
 					
 					try(PrintWriter pw = new PrintWriter("./src/test.txt") )
@@ -85,12 +85,12 @@ public class IOTest extends JFrame {
 						
 					}
 					break;
-				case "¿­±â":
+				case "ê¹¨ì§":
 					try(BufferedReader br = new BufferedReader(new FileReader("../log.txt")) )
 					{
 						int total = 0;
 						HashSet<String> hs = new HashSet<String>();
-						// IP¸¦ Áßº¹ ¾øÀÌ Ãâ·ÂÇÏ±âÀ§ÇØ¼­ SET »ç¿ë
+						// IPï¿½ï¿½ ï¿½ßºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ SET ï¿½ï¿½ï¿½
 						
 						HashMap<String, Integer> hm = new HashMap<String, Integer>();
 						
@@ -104,10 +104,10 @@ public class IOTest extends JFrame {
 							total+=Integer.parseInt(temp2[temp2.length-1]);	
 							hs.add(temp2[0]);
 							
-							Integer traffic = hm.get(temp2[0]); // Å°°¡ ¾øÀ¸¸é null
+							Integer traffic = hm.get(temp2[0]); // Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ null
 							
 							if(traffic == null) {
-								traffic = 0; // ¾ø´Â Å°ÀÏ¶§ 0À¸·Î ÃÊ±âÈ­
+								traffic = 0; // ï¿½ï¿½ï¿½ï¿½ Å°ï¿½Ï¶ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 							}
 							traffic += Integer.parseInt(temp2[temp2.length-1]);
 							hm.put(temp2[0], traffic);
@@ -117,21 +117,21 @@ public class IOTest extends JFrame {
 							System.out.println(str);
 						}
 						System.out.println();
-						System.out.println("Æ®·¡ÇÈ ÀüÃ¼ ÇÕ°è : "+total);
+						System.out.println("Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½Õ°ï¿½ : "+total);
 						System.out.println();
 						Set<String> keys = hm.keySet();
 						
-						System.out.println("¾ÆÀÌÇÇ´ç Æ®·¡ÇÈ ÇÕ°è");
+						System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Õ°ï¿½");
 						
 						for(String key:keys) {
 							System.out.println(key + " : " + hm.get(key));
 						}
 						
 					} catch(Exception e) {
-						System.out.println("¿¹¿Ü : "+e.getMessage());
+						System.out.println("ï¿½ï¿½ï¿½ï¿½ : "+e.getMessage());
 					}
 					break;
-				case "Å¬¸®¾î":
+				case "Å¬ï¿½ï¿½ï¿½ï¿½":
 					jl.setText("");
 					break;
 				
