@@ -14,7 +14,7 @@ public class JavaOracleTest {
 			System.out.println("오라클 드라이버 클래스 로드 성공");
 			
 			// 오라클 접속
-			Connection con = DriverManager.getConnection("jdbc:oracle:thing:@211.183.7.61:xe", "user28", "user28");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@211.183.7.61:1521:xe", "user28", "user28");
 			System.out.println("접속 성공");
 			
 			PreparedStatement ps = con.prepareStatement("select * from transactions");

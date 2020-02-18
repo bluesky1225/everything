@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>인코딩</title>
+<script>
+	var url = "http://www.daum.net/name=홍길동&address=서울&phone=01011112222";
+	var url_encoded1 = encodeURI(url);
+	var url_encoded2 = encodeURIComponent(url);
+	var url_encoded3 = escape(url);
+	document.write("<br/>" + url_encoded1);
+	document.write("<br/>" + url_encoded2);
+	document.write("<br/>" + url_encoded3);
+</script>
+</head>
+<body>
+
+</body>
+</html>

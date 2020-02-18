@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AJAX</title>
+<script>
+window.addEventListener('load', function(e) {
+	// ajax를 이용해서 test.txt 파일의 내용을 읽어서 disp영역에 출력하기
+	var disp = document.getElementById("disp");
+	
+	var ajax;
+	
+	if(window.ActiveXObject) {
+		ajax = new ActiveXObject("Microsoft.XMLHTTP");
+	} else {
+		ajax = new XMLHttpRequest();
+	}
+	
+	ajax.open('GET', 'test.txt');
+	ajax.send('');
+	
+	ajax.onreadystatechange = function() {
+		if(ajax.readyState == 4 && ajax.status >= 200 && ajax.status < 300) {
+			alert("dd");
+			disp.innerHTML = ajax.responseText;
+		}
+	} 
+});
+</script>
+</head>
+<body>
+	<div>고정된 내용</div>
+	<div id="disp">동적으로 변경되는 내용</div>
+	<div>고정된 내용</div>
+</body>
+</html>

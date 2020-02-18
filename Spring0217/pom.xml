@@ -1,0 +1,120 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Spring0217</groupId>
+  <artifactId>Spring0217</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  	<!-- 이 코드를 pom.xml 파일에 붙여 넣습니다.-->
+
+ 	<properties> 
+	
+		<!-- Generic properties -->
+		<!-- 자바 버전 -->
+		<java.version>1.6</java.version>
+		<!-- 소스코드와 출력되는 문자열을 인코딩 설정 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		 
+		
+		<!-- Spring 버전 3.2.3-->
+		<!-- 5.0.7로 변경 -->
+		<spring-framework.version>5.0.7.RELEASE</spring-framework.version>
+		
+		 
+		
+		<!-- Hibernate / JPA -->	
+		<hibernate.version>4.2.1.Final</hibernate.version>
+		
+		 
+		
+		<!-- Logging / 로그라이브러리 버전-->	
+		<logback.version>1.0.13</logback.version>	
+		<slf4j.version>1.7.5</slf4j.version>
+		
+		 
+		
+		<!-- Test / 테스트 라이브러리 버전으로 최근에는 4.12이상 사용해야함-->	
+		<junit.version>4.12</junit.version> 
+	
+	</properties>
+	
+	 
+	<!-- 의존성 라이브러리 설정 -->
+	<dependencies>
+		
+		<!-- Spring and Transactions -->
+		
+		<!-- Spring 기본 라이브러리 -->
+		<dependency>	
+			<groupId>org.springframework</groupId>		
+			<artifactId>spring-context</artifactId>		
+			<version>${spring-framework.version}</version>				
+		</dependency>	
+		<dependency>	
+			<groupId>org.springframework</groupId>	
+			<artifactId>spring-tx</artifactId>	
+			<version>${spring-framework.version}</version>	
+		</dependency>
+	
+	 
+	
+		<!-- Logging with SLF4J & LogBack -->
+		
+		<!-- 로그 기록 라이브러리 설정 -->
+		<dependency>	
+			<groupId>org.slf4j</groupId>		
+			<artifactId>slf4j-api</artifactId>		
+			<version>${slf4j.version}</version>		
+			<scope>compile</scope>	
+		</dependency>
+		
+		<dependency>	
+			<groupId>ch.qos.logback</groupId>		
+			<artifactId>logback-classic</artifactId>		
+			<version>${logback.version}</version>		
+			<scope>runtime</scope>	
+		</dependency>
+	
+	 
+	
+		<!-- Hibernate -->
+		<!-- 라이브러리를 가져오는 부분 -->
+		<dependency>	
+			<groupId>org.hibernate</groupId>		
+			<artifactId>hibernate-entitymanager</artifactId>		
+			<version>${hibernate.version}</version>	
+		</dependency> 
+	
+		<!-- Test Artifacts -->
+		<!-- Spring 테스트 -->
+		<dependency>	
+			<groupId>org.springframework</groupId>		
+			<artifactId>spring-test</artifactId>
+			<version>${spring-framework.version}</version>		
+			<scope>test</scope>	
+		</dependency>
+		
+		<!-- JUnit -->
+		<dependency>	
+			<groupId>junit</groupId>	
+			<artifactId>junit</artifactId>	
+			<version>${junit.version}</version>	
+			<scope>test</scope>	
+		</dependency> 
+	
+	</dependencies>
+</project>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바스크립트</title>
+<script>
+
+for(var i=0; i<10; i++) {
+	document.write("Hello World<br/>");
+}
+
+document.write("-----------------------------<br/>");
+
+var i = 0;
+while(i<10) {
+	document.write("Hello World<br/>");
+	i++;
+}
+
+document.write("-----------------------------<br/>");
+
+i = 0;
+do {
+	document.write("Hello World<br/>");
+	i++;
+}while(i<10);
+
+document.write("-----------------------------<br/>");
+
+var datas = [5, 3, 7];
+for(var temp in datas) {
+	document.write("인덱스 "+temp+"은 "+datas[temp]+"<br/>");
+}
+
+document.write("-----------------------------<br/>");
+
+// location 객체의 모든 속성을 확인
+// 객체를 for에 대입하면 모든 속성을 임시변수에 대입
+for(var attr in location) {
+	document.write(attr+"<br/>");
+}
+
+document.write("-----------------------------<br/>");
+
+for(var i=5; i>0; i--) {
+	for(var j=i; j>0; j--) {
+		document.write("*");
+	}
+	document.write("<br/>");
+}
+
+document.write("--------- {} 생략가능 ---------<br/>");
+
+i = 0;
+do 
+	document.write((i++)+"<br/>");
+while(i<10);
+
+document.write("--------- {} 생략가능 ---------<br/>");
+
+for(i=0; i<10; i++)
+	if(i==7) break;
+
+document.write(i+"<br/>");
+
+document.write("--------- {} 생략가능 ---------<br/>");
+document.write("-------- 3의 배수만 제외 --------<br/>");
+for(i=0; i<10; i++)
+	if(i%3==0) { 
+		continue;
+	} else {
+		document.write(i+"<br/>");
+	}
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

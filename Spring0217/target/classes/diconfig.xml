@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:c="http://www.springframework.org/schema/c" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- di 패키지의 DTO라는 클래스의 객체를 생성해주는 bean
+	DTO dto = new DTO(); 과 유사 
+	직접 작성한 코드는 호출한 횟수만큼 객체를 생성하지만 여기서는 1번만 생성 -->
+	<bean id="dto" class="di.DTO">
+		<constructor-arg value="생성자를 이용한 주입" />
+	</bean>
+	
+	<bean id="dto2" class="di.DTO">
+		<property name="name" value="프로퍼티를 이용한 주입"/>
+	</bean>
+	
+	<bean id="string" class="java.lang.String">
+		<!-- String(String original) 생성자를 이용한 주입 -->
+		<constructor-arg value="다른 bean을 이용한 주입" />
+	</bean>
+	
+	<bean id="dto3" class="di.DTO">
+		<!-- name 프로퍼티에 string이라는 bean을 대입 -->
+		<property name="name">
+			<ref bean="string"/>
+		</property>
+	</bean>
+	
+</beans>

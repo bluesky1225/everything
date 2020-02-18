@@ -1,0 +1,104 @@
+.korea{
+	color:#002255;
+	width:200px;
+	padding:30px; /* 경계선과 콘텐츠와의 여백 */
+	border:1px solid rgb(18, 52, 88); 
+	/*
+		여러 속성의 값을 한번에 적용할떄 공백으로 구분
+		,는 동일한 속성의 값을 여러개 적용할때 구분
+	*/
+	background:#eeeeee;
+	/*
+		여러 개의 값을 지정할 수 있는 속성의 경우에 뒤에서부터 값 생략이 가능함
+		css나 java script는 옵션에 전부 기본값이 설정돼있기때문
+	*/
+	border-radius:15px;
+	box-shadow:inset 0px 0px 20px 15px rgba(18, 52, 88, 0.7);
+	/* inset:내부  x, y : 출발점 x2, y2 : 너비와 높이 rgba(r, g, b, alpha) */
+}
+
+
+.korea p{vertical-align:middle;}
+/*
+	menu클래스를 가진 객체들은 왼쪽부터 배치하고 마진 10, 오른쪽에 다른 콘텐츠를 배치할 수 있도록 설정
+*/
+.menu{
+	float:left;
+	margin:10px;
+}
+
+/*
+	title 클래스를 가진 객체는 이전에 적용된 float를 해제하고 원래대로 배치
+*/
+.title {
+	clear:both;	
+}
+
+table {
+	border:1px solid black;
+	width:400px;
+}
+
+th, td{
+	width:200px;
+}
+
+.contents{
+	height:100px;
+	width:420px;
+	overflow:auto;
+}
+
+#transform {
+	width:200px;
+	height:60px;
+	text-align:center;
+	background-color:green;
+	-webkit-transform:scale(2.0);
+	-webkit-transform:rotate(45deg);
+	-webkit-transform:skew(10deg, 10deg);
+}
+
+#menu {
+	font:20px;
+	width:150px;
+	height:20px;
+	color:red;
+	background:papayawhip;
+	
+	/* 2초에 걸쳐 변화, hover 옵션에도 적용 */
+	-webkit-transition:width 2.0s;
+	-webkit-transition:color 2.0s;
+	-webkit-transition:background-color 2.0s;
+}
+
+#menu:hover{	
+	width:300px;
+	color:#e79;
+}
+
+@-webkit-keyframes ani{
+	from{
+		left:0px;
+		top:0px;
+		-webkit-transform:rotate(0deg);
+	}
+	50%{
+		left:700px;
+		top:0px;
+		-webkit-transform:rotate(0deg);
+	}
+	to{
+		left:700px;
+		top:200px;
+		-webkit-transform:rotate(3600deg);
+	}
+}
+
+img{
+	position:absolute;
+	-webkit-animation-name:ani;
+	-webkit-animation-duration:10.0s;
+	-webkit-animation-iteration-count:infinite;
+	-webkit-animation-direction:alternate;
+}

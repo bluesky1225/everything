@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규표현식 활용한 유효성 검사
+</title>
+
+</head>
+<body>
+<form id="reg" action="register.jsp">
+	<div id="errmsg"></div>
+	<label for="id">아이디</label>
+	<input type="text" id="id" /><br/>
+	<label for="pw">비밀번호</label>
+	<input type="password" id="pw" name="pw" /><br/>
+	<label for="email">이메일</label>
+	<input type="text" id="email" name="email"/><br/>
+	<label for="name">이름</label>
+	<input type="text" id="myname" /><br/>
+	<input type="submit" value="확인" />
+</form>
+
+<script>
+var regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
+var email = document.getElementById("email");
+var pw = document.getElementById("pw");
+var id = document.getElementById("id");
+var myname = document.getElementById("myname");
+var reg = document.getElementById("reg");
+var errmsg = document.getElementById("errmsg");
+
+reg.addEventListener("submit", function(e) {
+	
+	var evt = e || window.event;
+	
+	if(!regex.test(pw.value)) {
+		alert("비밀번호의 형식이 잘못되었습니다.");
+		evt.preventDefault();
+		return;
+	}else if(!regExp.test(email.value)) {
+		alert("이메일의 형식이 잘못되었습니다.");
+		evt.preventDefault();
+		return;
+	}else if(id.value.trim().length <= 0) {
+		errmsg.innerHTML = "아이디가 입력되지 않았네요";	
+		evt.preventDefault();
+		return;
+	}else if(pw.value.trim().length <= 0) {
+		errmsg.innerHTML = "비밀번호가 입력되지 않았네요";	
+		evt.preventDefault();
+		return;
+	}else if(email.value.trim().length <= 0) {
+		errmsg.innerHTML = "이메일이 입력되지 않았네요";	
+		evt.preventDefault();
+		return;
+	}else if(myname.value.trim().length <= 0) {
+		errmsg.innerHTML = "이름이 입력되지 않았네요";		
+		evt.preventDefault();
+		return;
+	}
+
+	
+	errmsg.style.color = "red";
+	
+});	
+
+try {
+	// 이 문장에서 예외가 발생하면 멈추지않고 catch 구문으로 이동하기때문에 멈추지 않습니다.
+	var ar = new Array(4300000000);
+} catch(e) {
+	console.log("배열 생성에 실패했습니다.");
+} finally {
+	
+}
+
+alert("여기까지 수행");
+
+</script>
+</body>
+</html>

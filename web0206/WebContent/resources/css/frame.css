@@ -1,0 +1,21 @@
+.btn {
+	border-radius:7px;
+}
+
+#gender {
+	border-radius:5px;
+	width:210px;
+}
+
+#ask {
+	margin:10px;
+}
+
+.ask_row {
+	margin:10px;
+	padding:10px;
+}
+
+#ask_form {
+	width:300px;
+}

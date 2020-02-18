@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트</title>
+</head>
+<body>
+	<span id="disp">텍스트</span><br/>
+	<input type="button" id="eventBtn" value="인라인 방식 이벤트 처리" onclick="document.getElementById('disp').style.color='red';"/>
+	<br/>
+	<input type="button" id="eventBtn2" value="고전적 방식 이벤트 처리(스크립트)"/>
+	<br/>
+	<input type="button" id="eventBtn3" value="표준 이벤트 처리 모델(스크립트)"/>
+	<br/>
+	<form id="myform" action="server.jsp">
+		전화번호 : <input type="text" name="tel" id="tel" />
+		<input type="submit" value="전송" />
+	</form>
+	<br/>
+	
+	<!-- 이벤트 버블 방지  -->
+	<div id="outer">
+		부모 DOM
+		<p id="inner">
+			자식 DOM
+		</p>
+	</div>
+	
+	<script>
+		var outer = document.getElementById("outer");
+		var inner = document.getElementById("inner");
+		
+		//  이벤트 버블로 인하여 outer의 이벤트가 적용됨
+		outer.addEventListener("click", function(e) { 
+			inner.style.color="red"; 
+		});
+		
+		inner.addEventListener("click", function(e) { 
+			inner.style.color="blue"; 
+			
+			// 이벤트 버블링 막기
+			var evt = e || window.event;
+			
+			// cancelBubble 속성이 있으면 true 대입 - IE에서 동작
+			evt.cancelBubble = true;
+			
+			// stopPropagation 함수가 존재하면 호출 - IE 이외 브라우저에서 동작
+			if(evt.stopPropagation) {
+				evt.stopPropagation();
+			}
+		});
+		
+		var myform = document.getElementById("myform");
+		var tel = document.getElementById("tel");		
+		
+		myform.addEventListener("submit", function(e){
+			if(tel.value.trim().length<=0) {
+				alert("전화번호가 입력되지 않았네요. 필수 입력란입니다.");
+				
+				var evt = window.event || e;
+				evt.preventDefault();
+			}
+		});	
+	
+		// 고전적 이벤트 처리 모델
+		document.getElementById("eventBtn2").onclick = function(e) {
+			document.getElementById("disp").innerHTML = "내용 변경!";	
+		};	
+		
+		// 표준 이벤트 처리 모델
+		var disp = document.getElementById("disp");
+		var btn = document.getElementById("eventBtn3");
+		
+		btn.addEventListener("click", function(e){
+			disp.style.color="blue";
+			disp.style.background="papayawhip"; // backgroundColor도 가능
+			disp.innerHTML="글자와 글자색을 동시에 변경";
+			// this는 이벤트가 발생한 객체
+			this.value="눌렀다";
+			// 이벤트가 발생한 좌표 확인
+			// 이벤트 객체 가져오기
+			var evt = e || window.event;
+			console.log(evt.screenX + ":" + evt.screenY);
+			console.log(evt.modifier);
+			
+			document.getElementById("eventBtn").onclick();
+		});
+	</script>
+</body>
+</html>

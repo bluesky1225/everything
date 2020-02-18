@@ -1,0 +1,44 @@
+<!-- DTD - 문서의 구조를 설명 -->
+<!DOCTYPE html>
+
+<!-- 문서의 시작 -->
+<html>
+
+<!-- 문서에 대한 설정 -->
+<head>
+
+<!-- charset 설정이 없으면 한글이 깨질 수 있음 -->
+<meta charset="UTF-8">
+<title>HTML4</title>
+</head>
+
+<!-- 문서의 출력 부분 -->
+<body>
+<map name="lion">
+	<area shape="circle" coords="100, 100, 50" href="https://www.naver.com"/>
+	<area shape="rect" coords="200, 200, 300, 300" href="https://www.google.com"/>
+</map>
+<img src="./resources/images/a.png" width="20%" height="20%" usemap="#lion" border="1" align="left"/>
+
+<map name="korea">
+	<area shape="circle" coords="130, 100, 50" href="https://korean.visitseoul.net/map-guide-book"/>
+</map>
+<img src="./resources/images/c.png" width="20%" height="20%" usemap="#korea" border="1"/>
+
+<!-- 테이블 생성 -->
+<table border="1">
+<tr>
+<td colspan="2" align="center"><h3>전화번호부</h3></td>
+</tr>
+<tr>
+<th width="40%">이름</th><th width="60%">전화번호</th>
+</tr>
+<tr>
+<td>홍길동</td><td>01000020003</td>
+</tr>
+<tr>
+<td>제시카</td><td>01022223333</td>
+</tr>
+</table>
+</body>
+</html>

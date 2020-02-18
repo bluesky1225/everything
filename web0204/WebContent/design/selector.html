@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>선택자</title>
+
+<style>
+	h3{color:red;}
+	h4{color:blue;}
+	.content{color:orange;}
+	#article{color:#9900ff;}
+	
+	/* h3 태그에 마우스가 올라오면 배경색을 파란색으로 설정 */
+	h3:hover{color:blue; background-color:magenta;}
+	h3:active{color:black;}
+	input:focus{background-color:magenta;}
+	
+	p span{color:red;}
+	p > span{background-color:orange;}
+	
+	#first{
+		color:orange;	
+		font-weight:900;
+		font-size:24pt;
+	}
+	#second{
+		font:bold normal small-caps 18px /1.6  돋움;
+	}
+</style>
+
+</head>
+<body>
+	<p id="first">안녕하세요 반갑습니다</p>
+	<p id="second">안녕하세요 반갑습니다</p>
+	<p><div><span>안녕하세요</span></div></p>
+	<p><span>반갑습니다</span></p>
+	
+	<input type="text" />
+	<h3>안녕하세요</h3>
+	<h4 class="content">내용</h4>
+	<p class="content">문단 내용</p>
+	<p id="article">기사 내용</p>	
+</body>
+</html>

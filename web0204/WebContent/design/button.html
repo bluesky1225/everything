@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* 이미지를 클릭할때 위와 왼쪽에 여백을 설정해서 이동 */
+	/*
+	div:active {
+		margin-left:10px;
+		margin-top:30px;
+	}
+	*/
+	img {
+		width:100px;
+	}
+	#btn {
+		width:60px;
+		height:60px;
+		background:papayawhip;
+		margin-bottom:10px;
+		border-width:5px;
+		border-style:inset;
+		border-left-color:red;
+		border-top-color:red;
+		border-right-color:blue;
+		border-bottom-color:blue;
+	}
+	#btn:active {
+		width:60px;
+		height:60px;
+		background:papayawhip;
+		margin-bottom:10px;
+		border-width:5px;
+		border-style:inset;
+		border-left-color:blue;
+		border-top-color:blue;
+		border-right-color:red;
+		border-bottom-color:red;
+	}
+	#btn1:active {
+		background-image:url("./../resources/images/2.webp");
+	}
+</style>
+</head>
+<body>
+	<div id="btn">
+		버튼
+	</div>
+	<div id="btn1">
+		<a href="#">
+			<img src="./../resources/images/1.webp" />
+		</a>
+	</div>
+</body>
+</html>

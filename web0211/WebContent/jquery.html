@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리
+</title>
+</head>
+<body>
+	<div id="disp">
+	</div>
+	<!-- jquery 링크 설정 -->
+	<!--
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ 	-->
+ 	<script src = "./resources/js/jQuery.js"></script>
+ 	
+	<script>
+		$.ajax({
+			url:'data.json', 
+			dataType:'json', 
+			success:function(data) {
+				alert(data);
+			}
+		}
+		);
+	</script>
+</body>
+</html>

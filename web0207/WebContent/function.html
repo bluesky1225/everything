@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수</title>
+<script>
+	var func = function(a, b) {
+		total = a+b;
+		return total;
+	}
+	
+	document.write(func(4, 3)+"<br/>");
+	document.write(func+"<br/>");
+	
+	var func2 = function(c) {
+		if(c=="undefined") {
+			document.write("매개변수에 값이 없음");
+		} else {
+			return c;
+		}
+	}
+	
+	document.write(func2()+"<br/>");
+	document.write(func2(9)+"<br/>");
+	
+	var func3 = function() {
+		for(var temp in arguments) {
+			document.write(arguments[temp] + "<br/>");
+		}		
+	}
+	
+	func3(1, 2, 3, 4, 5, 6, 7);
+	
+	// 함수가 함수를 리턴해서 내부의 데이터를 조작할 수 있도록 하는 것을  closure라고 합니다
+	var func4 = function() {
+		var inner = 0;
+		
+		// 함수를 리턴
+		return function() {
+			inner = inner + 1;
+			document.write("<br/>"+inner);
+		}
+	}
+	
+	var k = func4(); // func4를 호출한 결과가 k에 저장 - k도 함수가 됩니다.
+	// k()를 호출하면 inner의 값이 1씩 증가하면서 출력됩니다.
+	k()	
+	k()
+	document.write("<br/>";
+	k	
+	document.write("<br/>";
+ </script>
+</head>
+<body>
+
+</body>
+</html>

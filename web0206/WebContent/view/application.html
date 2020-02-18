@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문의하기</title>
+<link rel="stylesheet" href="./../resources/css/frame.css" />
+</head>
+<body>
+<form action="imagemap.html">
+	<fieldset id="ask_form">
+		<legend>문의하기</legend>
+		<table id="ask">
+		<tr>
+		<td>
+		<label for="name">이름</label>	
+		</td>
+		<td>	
+		<input type="text" id="name" name="name"/>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<label for="email">이메일</label>
+		</td>
+		<td>
+		<input type="text" id="email" name="email"/>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="2">
+		<fieldset id="gender">
+		<legend>성별</legend>
+		<!-- checkbox와 radiobutton은 value를 별도로 설정해줘야합니다
+		라디오 버튼을 선택하면 gender라는 이름으로 man이라는 값이 넘어갑니다.
+		value를 설정하지않으면 on/off가 넘어갑니다. -->
+			<input type="radio" value="man" name="gender"/>남
+			<input type="radio" value="women" name="gender"/>여<br />
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<label for="phone">전화번호</label>
+		</td>
+		<td>
+		<input type="text" id="phone" name="phone"/>
+		</td>
+		</tr>
+		<tr>
+		<td>
+		<label for="message">문의사항</label>
+		</td>
+		<td>
+		<textarea rows="5" cols="22" id="message" name="message"/>
+		</textarea>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="2">
+		<input type="submit" class="btn" value="확인"/>
+		<input type="reset" class="btn" value="리셋" />
+		<input type="hidden" name="pageno" value="7" />
+		</td>
+		</tr>
+		</table>
+	</fieldset>
+</form>
+</body>
+</html>

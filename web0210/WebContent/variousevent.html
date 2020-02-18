@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>다양한 이벤트 처리</title>
+<script>
+	// window가 로드 되면 function 수행
+	// window가 로드 된다는 것은 태그를 전부 읽고 메모리에 올리고 난 후
+	window.addEventListener('load', function(e) {
+		var text = document.getElementById("name");
+		text.value = "기본값";
+		
+		// 포커스가 생길때
+		text.addEventListener("focusin", function(e) {
+			this.style.backgroundColor = "papayawhip";
+		});
+		
+		// 포커스가 없어질때
+		text.addEventListener("focusout", function(e) {
+			this.style.backgroundColor = "yellow";
+		});
+		
+		var text2 = document.getElementById("name2"); 
+		// 키보드를 눌렀을때 누른 키값을 대화상자에 출력
+		text2.addEventListener("keydown", function(e) {
+			var evt = window.event || e;
+			// 누른 키값 가져오기
+			// ie가 아닌 경우 
+			var code = evt.which ? evt.which : evt.keyCode;
+			alert(code);
+			text.value = evt.code;
+			
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="text" id="name" size="20" />
+	<input type="text" id="name2" size="20" />
+</body>
+</html>

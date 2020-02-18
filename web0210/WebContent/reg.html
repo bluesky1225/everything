@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규 표현식</title>
+<script>
+	var msg = "안녕하세요. 반갑습니다.";
+	// msg에 숫자가 포함되어있는지 확인
+	
+	var reg = /[0-9]/;
+	if(reg.test(msg)) {
+		console.log("숫자가 포함돼있습니다");
+	} else {
+		console.log("숫자가 포함돼있지 않습니다");
+	}
+	
+	msg = "문재인을 문재인이 안녕하세요 문재인이다";
+	
+	reg = /문재인/gm;
+	
+	var result = msg.split(reg);
+	
+	for(i in result) {
+		document.write(result[i] + "<br/>");
+	}
+	
+	// 처음 만나는 문재인은 삭제. 아무것도 없는 글자와 치환.
+	// 한정자 g를 사용하여 모든 문재인을 아무것도 없는 글자와 치환.
+	result = msg.replace(reg, "");
+	document.write(result+"<br/>");
+	
+	msg = "바보입니까?";
+	
+	reg = /바보/;
+	
+	if(reg.test(reg)) {
+		alert("바보는 욕설입니다. 다시 입력해주세요.");
+	}
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

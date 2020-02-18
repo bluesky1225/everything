@@ -1,0 +1,174 @@
+.menu {
+	width:100px;
+	height:50px;
+	background-color:papayawhip;
+	float:left;
+	text-align:center;
+	font: bold normal small-caps 18px /1.6 "돋움", sans-serif;
+	color: red;
+	
+}
+
+#products {
+	clear:both;
+}
+
+#background {
+	width:100%;
+	height:100%;
+	padding:30px;
+	background-color:#1a202c;
+}
+
+.product {	
+	margin:10px;
+	padding:10px;
+	text-align:center;
+	font: bold normal small-caps 20px /1.6 "돋움", sans-serif;
+	color:white;
+	width:170px;
+	height:200px;
+	border:0px inset #233043;
+	border-bottom-width:3px;
+	border-right-width:3px;
+	border-radius:10px;
+	background-color:#42516f;
+}
+	
+.product:hover {
+	background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+.tabs {
+	width:100px;
+	height:50px;
+	padding:30px;	
+	color:white;
+	background:#3f465f;
+	border-radius:15px;
+	margin:10px;
+	font: bold normal small-caps 30px /1.6 "돋움", sans-serif;
+}
+
+.tabs:hover {
+	color:#002255;
+	width:100px;
+	height:50px;
+	padding:30px; /* 경계선과 콘텐츠와의 여백 */
+	border:1px solid rgb(18, 52, 88); 
+	/*
+		여러 속성의 값을 한번에 적용할떄 공백으로 구분
+		,는 동일한 속성의 값을 여러개 적용할때 구분
+	*/
+	background:#eeeeee;
+	/*
+		여러 개의 값을 지정할 수 있는 속성의 경우에 뒤에서부터 값 생략이 가능함
+		css나 java script는 옵션에 전부 기본값이 설정돼있기때문
+	*/
+	border-radius:15px;
+	box-shadow:inset 0px 0px 20px 15px rgba(18, 52, 88, 0.7);
+	/* inset:내부  x, y : 출발점 x2, y2 : 너비와 높이 rgba(r, g, b, alpha) */
+}
+
+a {
+	text-decoration:none;
+	text-align:center;
+}
+
+#video {
+	width:600px;
+	height:1000px;
+	padding:20px;
+	margin-left:500px;
+	background: -moz-linear-gradient(-45deg, rgba(63,76,107,1) 0%, rgba(63,76,107,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(63,76,107,1) 0%,rgba(63,76,107,1) 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+#qa {
+	border:1px solid #0080ff;
+	width:300px;
+	height:320px;
+	border-radius:5px;
+	background:white;
+	position:fixed;
+ 	bottom: 20px;
+  	right: 20px;
+  	box-shadow:outset 0px 0px 20px 15px rgba(11, 11, 11, 0.2);
+}
+
+#qa_title {
+	border-radius:5px;
+	height:60px;
+	background:#0080ff;
+	font: bold normal small-caps 20px /3.0 "돋움", sans-serif;
+	text-align:center;
+	color:white;
+}
+
+#qa_content {
+	 
+	border-radius:5px;
+	background:white;
+}
+
+.qa_buttons {
+	width:250px;
+	height:50px;
+	margin:10px;
+	margin-left:25px;
+	border:1px outset #ceffff;
+	border-radius:3px;
+	background: #0080ff;
+	font: bold normal small-caps 20px /2.6 "돋움", sans-serif;
+	text-align:center;
+	color:#ffffff;
+}
+
+.qa_buttons:hover {
+	background: -moz-linear-gradient(-45deg, rgba(247,251,252,1) 0%, rgba(217,237,242,1) 40%, rgba(173,217,228,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(-45deg, rgba(247,251,252,1) 0%,rgba(217,237,242,1) 40%,rgba(173,217,228,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	color:#3a485c;
+}
+
+#chat_window {
+	width:420px;
+	height:460px;
+	border:1px solid #0080ff;
+	position:absolute;
+	top: -500px;
+  	left: 20px;
+}
+
+#chat_title {
+	width:420px;
+	height:30px;
+	color:white;
+	background:#0080ff;
+	font: bold normal small-caps 20px /1.4 "돋움", sans-serif;
+	text-align:center;
+}
+
+#chat {	
+	height:400px;
+	width:420px;	
+	overflow:scroll;
+	background:white;
+	color:white;
+}
+
+#chat_input {
+	width:420px;
+	height:30px;
+	background:#0080ff;
+}
+
+#hidden {
+	width:100px;
+	height:100px;
+	border:1px solid #0080ff;
+	background:blue;
+	position:absolute;
+	top: 150px;
+  	left: 20px;
+}

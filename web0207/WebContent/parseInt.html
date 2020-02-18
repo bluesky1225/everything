@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문자열 형변환</title>
+<script>
+var a = "1234";
+
+document.write((parseInt(a)+1)+"<br/>");
+var temp = 0;
+for(var i=0; i<a.length; i++) {	// 계산기의 로직과 동일, 10씩 곱해서 더하다가 문자열(연산자) 입력시 종료(숫자화)
+	temp=(temp*10)+(a.charCodeAt(i)-48);
+}
+document.write(temp+"<br/>");
+</script>
+</head>
+<body>
+
+</body>
+</html>

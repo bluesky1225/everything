@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>두번째 페이지</title>
+</head>
+<body>
+	<h3>리퍼러 확인을 위한 페이지</h3>
+	
+	<div id="disp">
+		Hello JavaScript
+	</div>
+	
+	<span id="errorspan">
+		
+	</span><br/>
+	
+	<input type="text" id="addr" />
+	
+	<script>
+		// 콘솔에 이 페이지에 어떻게 접속했는지를 출력
+		//alert(document.referrer)
+		console.log(document.referrer)
+		// disp라는 id를 가진 객체 찾기
+		document.getElementById("disp").style.color = "red";
+		document.getElementById("errorspan").innerHTML = "필수 입력입니다";
+		document.getElementById("addr").value = "테스트";
+		
+	</script>
+</body>
+</html>

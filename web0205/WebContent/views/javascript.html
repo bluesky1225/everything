@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+	// 변수만들기
+	var msg = "자바스크립트";
+	
+	// 브라우저에 출력
+	document.write(msg + "<br/>");
+	
+	// 팝업창에 출력
+	alert(msg);
+	
+	// 디버거창에 출력
+	console.log(msg);
+	
+	// 자바스크립트에서는 변수를 만들고 값을 대입하지 않으면 없는 것으로 간주
+	// undefined
+	var x;
+	document.write(x + "<br/>");
+	var y=null;
+	document.write(y + "<br/>");
+	
+	document.write("20" * 10 + "<br/>");
+	document.write("20" + 10 + "<br/>");
+	document.write(Number("20") + 10 + "<br/>");
+	
+	document.write((2 << 1) + "<br/>");
+	document.write(~2 + "<br/>");
+	document.write((29 ^ 9) + "<br/>");
+	
+	var a = [1, 2, 3];
+	var b = [1, 2, 4];
+	var c = [1, 2, 3];
+	
+	document.write((a&&b) + "<br/>");
+	document.write((a&c) + "<br/>");
+	
+</script>
+</body>
+</html>
