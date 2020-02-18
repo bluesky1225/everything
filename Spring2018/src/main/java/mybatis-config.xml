@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+
+<configuration>
+	<typeAliases>
+		<!-- sql 파일에서는 sqlmapper 패키지이름을 생략 가능 -->
+		<package name="sqlmapper"/>
+	</typeAliases>
+</configuration>
