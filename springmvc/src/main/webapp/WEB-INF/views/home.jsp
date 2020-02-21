@@ -30,6 +30,29 @@
 			</tr>
 		</c:forEach>
 	</table>
-
+	
+	<a href="insert">데이터 삽입</a><br/>
+	
+	<a href="item.xls">엑셀로 내려받기</a><br/>
+	
+	<a href="item.pdf">pdf로 내려받기</a><br/>
+	
+	<a href="item1.json">json으로 내려받기</a><br/>
+	
+	<a href="item.csv">csv로 내려받기</a><br/>
+	
+	<a href="item2.json">json으로 내려받기2</a><br/>
+	
+	<a href="#" id="ajax">ajax로 json 데이터 사용하기</a><br/>	
+	
+	<a href="item.xml">XML로 내려받기</a><br/>
+	
+	<div align="center" id="disp"></div>
+	
+	<script type="text/javascript" src="./resources/js/home.js"></script>
 </body>
 </html>
+
+
+
+

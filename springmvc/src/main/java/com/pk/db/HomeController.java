@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.pk.db.domain.Item;
+import com.pk.db.domain.ItemReport;
 import com.pk.db.service.ItemService;
 
 /**
@@ -50,4 +51,66 @@ public class HomeController {
 		
 		return "detail";
 	}
+	
+	// 엑셀파일 읽기
+	@RequestMapping(value = "/item.xls", method = RequestMethod.GET)
+	public String excel(HttpServletRequest request, Model model) {
+		// 서비스 메소드 호출
+		
+		List<Item> list = itemService.getAll(request); 
+		
+		// 데이터 저장
+		model.addAttribute("list", list);
+		
+		return "excel";
+	}
+	
+	// pdf파일 읽기
+	@RequestMapping(value = "/item.pdf", method = RequestMethod.GET)
+	public String pdf(HttpServletRequest request, Model model) {
+		// 서비스 메소드 호출
+
+		List<Item> list = itemService.getAll(request); 
+
+		// 데이터 저장
+		model.addAttribute("list", list);
+
+		return "pdf";
+	}
+	
+	// json파일 읽기
+	@RequestMapping(value = "/item1.json", method = RequestMethod.GET)
+	public String item1json(HttpServletRequest request, Model model) {
+		// 서비스 메소드 호출
+
+		List<Item> list = itemService.getAll(request); 
+
+		// 데이터 저장
+		model.addAttribute("list", list);
+
+		return "item1json";
+	}
+	
+	// 문자열 리턴시 문자열 출력
+	@RequestMapping(value="/item.xml", method=RequestMethod.GET)
+	public String xml(HttpServletRequest request, Model model) {
+		List<Item> list = itemService.getAll(request);
+		
+		ItemReport itemReport = new ItemReport();
+		itemReport.setList(list);
+		
+		model.addAttribute("list", itemReport);
+		
+		return "xmlreport";
+	}
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert(HttpServletRequest request) {
+		// 서비스 메소드 호출
+	
+		
+		return "insert";
+	}
+	
+	
 }

@@ -19,6 +19,7 @@
 	</bean>
 	
 	<!-- MyBatis를 인터페이스를 이용해서 사용할때 필요한 Bean -->
+	<!--  
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
@@ -27,7 +28,7 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 		<property name="mapperInterface" value="com.pk.db.dao.ItemDao"/>
 	</bean>
-	
+	-->
 	
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"> 
 		<property name="dataSource" ref="dataSource" /> 
@@ -37,14 +38,11 @@
 			</list> 
 		</property> 
 		<property name="hibernateProperties"> 
-			<value> hibernate.dialect=org.hibernate.dialect.Oracle10gDialect </value> 
+			<value>
+			hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+			</value> 
 		</property> 
 	</bean>
 	
-	<tx:annotation-driven/>
-	
-	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"> 
-		<property name="sessionFactory" ref="sessionFactory" /> 
-	</bean>
 	
 </beans>

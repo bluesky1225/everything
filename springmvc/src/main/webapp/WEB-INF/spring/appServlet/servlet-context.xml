@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -19,6 +21,34 @@
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+		<!-- 우선순위를 수정 -->
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	<!-- html 이외의 출력을 위한 ViewResolver 설정 -->
+	<beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="0"/>
+	</beans:bean>
+	
+	<!-- Controller가 리턴한 뷰이름과 뷰 클래스를 매핑 -->
+	<beans:bean id="excel" class="com.pk.db.view.ExcelView" /> 
+	<beans:bean id="pdf" class="com.pk.db.view.PdfView" /> 
+	<!-- json은 Spring이 주는 뷰를 사용 -->
+	<beans:bean id="item1json" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" /> 
+	
+	<beans:bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller" id="marshaller">
+		<beans:property name="classesToBeBound">
+			<beans:list>
+				<beans:value>com.pk.db.domain.ItemReport</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- xml 뷰 설정 : id는 Controller가 리턴한 View 이름이고 modelKey에 설정하는 것은 model에 저장한 데이터 이름입니다. -->
+	<beans:bean id="xmlreport" class="org.springframework.web.servlet.view.xml.MarshallingView">
+		<beans:property name="marshaller" ref="marshaller"/>
+		<beans:property name="modelKey" value="list"/>
+		
 	</beans:bean>
 	
 	<!-- 어노테이션이 붙은 클래스의 bean을 자동으로 생성해주는 패키지 설정 -->
@@ -26,4 +56,10 @@
 	
 	<!-- controller가 처리할 수 없는 요청은 WAS가 처리하도록 설정 -->
 	<default-servlet-handler/>
+	
+	<tx:annotation-driven/>
+	
+	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager"> 
+		<beans:property name="sessionFactory" ref="sessionFactory" /> 
+	</beans:bean>
 </beans:beans>
