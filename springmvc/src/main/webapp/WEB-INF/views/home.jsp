@@ -26,7 +26,7 @@
 				<td align='center'><a href="detail/${item.itemid}">${item.itemname}</a></td>
 				<td align='center'>${item.price}원</td>
 				<td align='center'>${item.description}</td>
-				<td align='center'><img src="./resources/images/${item.pictureurl}" width="50%"></td>
+				<td align='center'><img src="./resources/images/${item.pictureurl}" width="200"></td>
 			</tr>
 		</c:forEach>
 	</table>

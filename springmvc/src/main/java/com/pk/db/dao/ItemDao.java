@@ -13,4 +13,5 @@ public interface ItemDao {
 	// Item 테이블에서 ItemId를 이용해서 데이터를 1개 찾아오는 메소드
 	@Select("select * from item where itemid = #{itemid}")
 	public Item getOne(int itemid);
+	
 }

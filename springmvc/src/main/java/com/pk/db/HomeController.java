@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pk.db.domain.Item;
 import com.pk.db.domain.ItemReport;
@@ -106,11 +107,23 @@ public class HomeController {
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert(HttpServletRequest request) {
-		// 서비스 메소드 호출
+		// 뷰이름을 리턴
 	
 		
 		return "insert";
 	}
 	
-	
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	public String insert(MultipartHttpServletRequest request) {
+		// 서비스 메소드 호출
+		int result = itemService.insertItem(request);
+		
+		if (result <= 0) {
+			
+		}
+		
+		// 삽입, 삭제, 갱신 등 새로고침을 했을때 이전 작업을 다시 수행하면 안 되는 경웅는 리다이렉트를 해야합니다.
+		// 리다이렉트 할때는 view 이름이 아니라 url 작성
+		return "redirect:./";
+	}
 }

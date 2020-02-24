@@ -26,6 +26,13 @@
 	</repositories>
 	
 	<dependencies>
+		<!-- 파일 업로드 처리를 위한 의존성 라이브러리 -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		
 		<!-- xml 출력을 위한 라이브러리 -->
 		<dependency> 
 			<groupId>org.springframework</groupId> 
