@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pk.db.domain.Item;
 import com.pk.db.domain.ItemReport;
+import com.pk.db.domain.Member;
 import com.pk.db.service.ItemService;
+import com.pk.db.service.MemberService;
+import com.pk.db.service.MemberServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -41,6 +45,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	
 	@RequestMapping(value = "/detail/{itemid}", method = RequestMethod.GET)
 	public String detail(HttpServletRequest request, Model model, @PathVariable int itemid) {
 		// 서비스 메소드 호출
@@ -51,6 +56,13 @@ public class HomeController {
 		model.addAttribute("item", item);
 		
 		return "detail";
+	}
+	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public String chat(HttpServletRequest request) {
+		
+		// 뷰 이름을 리턴
+		return "chat";
 	}
 	
 	// 엑셀파일 읽기
@@ -125,5 +137,43 @@ public class HomeController {
 		// 삽입, 삭제, 갱신 등 새로고침을 했을때 이전 작업을 다시 수행하면 안 되는 경웅는 리다이렉트를 해야합니다.
 		// 리다이렉트 할때는 view 이름이 아니라 url 작성
 		return "redirect:./";
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(HttpServletRequest request) {
+		// 뷰의 이름을 리턴
+		return "login";
+	}
+	
+	//@Autowired
+	//private MemberServiceImpl memberServiceImpl;
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(HttpServletRequest request, Model model, RedirectAttributes attrs){
+		// RedirectAttributes는 redirect 할 때 1번만 사용하는 데이터를
+		//	저장할 수 있는 Spring이 제공하는 클래스
+		
+		// 서비스의 메소드 호출
+		MemberService memberService = new MemberServiceImpl();
+		Member member = memberService.login(request);
+		
+		// 로그인 처리도 redirect로 이동
+		if(member == null) {
+			// 로그인 실패의 경우 msg를 저장하고 login으로 다시 이동
+			attrs.addFlashAttribute("msg", "없는 아이디거나 잘못된 비밀번호입니다.");
+			return "redirect:login";
+		} else {
+			// 로그인 성공이면 메인 페이지로 이동
+			return "redirect:./";
+		}
+		
+	}
+	
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, Model model) {
+	
+		
+		return "home";
 	}
 }

@@ -11,7 +11,7 @@
 <h2 align='center'>상품 상세 정보</h2>
 	<table border='1' align='center'>
 		<tr class="record">
-		<td rowspan="6"><img src="../resources/images/${item.pictureurl}" width="100%"></td>
+		<td rowspan="6"><img src="../resources/images/${item.pictureurl}" width="500px"></td>
 		</tr>
 		<tr class="record">
 			<td width="70" align='center'>아이디</td>

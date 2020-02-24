@@ -26,6 +26,12 @@
 	</repositories>
 	
 	<dependencies>
+		<!-- 웹소켓 사용을 위한 의존성 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 		<!-- 파일 업로드 처리를 위한 의존성 라이브러리 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -212,9 +218,8 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>

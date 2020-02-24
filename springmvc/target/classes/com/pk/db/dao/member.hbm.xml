@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.pk.db.domain"> <!-- domain.Item -->
+	<class name="Member" table="MEMBER"> 
+		<id name="num" column="NUM"> 
+		</id> 
+		<property name="userid" column="USERID" /> 
+		<property name="userpw" column="USERPW" /> 
+		<property name="nickname" column="NICKNAME" /> 
+	</class> 
+</hibernate-mapping>

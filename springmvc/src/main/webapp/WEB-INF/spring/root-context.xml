@@ -34,7 +34,9 @@
 		<property name="dataSource" ref="dataSource" /> 
 		<property name="mappingResources"> 
 			<list> 
+				<!-- 매핑 파일 추가 -->
 				<value>com/pk/db/dao/item.hbm.xml</value> 
+				<value>com/pk/db/dao/member.hbm.xml</value>
 			</list> 
 		</property> 
 		<property name="hibernateProperties"> 
