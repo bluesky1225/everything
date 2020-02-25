@@ -84,7 +84,14 @@
 	}
 	
 	var send = function() {
-		var nickname = document.getElementById("nickname").value;
+		if(document.getElementById("nickname").value!="") {
+			var nickname = document.getElementById("nickname").value;
+		} else {
+			var nickname = '${member.nickname}';
+		}
+		
+		
+		
 		var msg = document.getElementById("chatmessage").value;
 		ws.send(nickname + " : " + msg);
 		document.getElementById("chatmessage").value = "";

@@ -2,6 +2,7 @@ package com.pk.db.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,33 @@ public class ItemServiceImpl implements ItemService {
 		// MyBatis
 		//return dao.getAll();
 		
-		return hibernateDao.getAll();
+		List<Item> list = hibernateDao.getAll();
+		
+		// List를 정렬할때는 list.sort()를 사용
+		// list에 속한 데이터에 Comparable 인터페이스가 implements 되어있어야함
+		// 그렇지 않은 경우에는 Comparator 인터페이스를 구현한 인스턴스를 대입해주어야함
+		/*
+		list.sort(new Comparator<Item>() {
+
+			@Override
+			public int compare(Item o1, Item o2) {
+				// TODO Auto-generated method stub
+				return o1.getItemid()-o2.getItemid();
+			}
+			
+		});
+		*/
+		Comparator<Item> comp = new Comparator<Item>() {
+			@Override
+			public int compare(Item o1, Item o2) {
+				// TODO Auto-generated method stub
+				return o2.getItemid()-o1.getItemid();
+				//return o1.getItemname().compareTo(o2.getItemname());
+			}			
+		};
+		list.sort(comp);
+		
+		return list;
 	}
 	
 	@Override
@@ -124,4 +151,6 @@ public class ItemServiceImpl implements ItemService {
 		
 		return hibernateDao.insertItem(item);
 	}
+	
+	
 }

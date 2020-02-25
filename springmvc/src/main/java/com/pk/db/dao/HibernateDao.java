@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.pk.db.domain.Item;
+import com.pk.db.domain.Member;
 
 // repository : Bean(스프링이 생성하는 인스턴스)을 자동 생성해주고
 // 데이터 관련된 클래스라는 것을 알려주기 위한 어노테이션
@@ -31,5 +32,23 @@ public class HibernateDao {
 		sessionFactory.getCurrentSession().save(item);
 		
 		return 1;
+	}
+	
+public Member login(Member member) {	
+		
+		System.out.println(sessionFactory);
+		
+		// 하이버네이트는 기본키를 가지고 조회를 함
+		// userid가 기본키가 아니라서 SQL을 이용해서 직접 조회
+		List<Member> list = (List<Member>)sessionFactory.getCurrentSession()
+				.createSQLQuery("select * from member where userid=:userid")
+				.addEntity(Member.class).setString("userid", member.getUserid())
+				.list();
+				
+		if(list.size()==0) {
+			return null;
+		} else {
+			return list.get(0);
+		}
 	}
 }

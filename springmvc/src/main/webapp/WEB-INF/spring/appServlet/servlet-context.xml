@@ -5,11 +5,34 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
 		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Aspect 어노테이션을 추가한 AOP 클래스가 동작하도록 해주는 설정 -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- aop 설정 태그 -->
+	<!-- com.pk.db 패키지내에 있는 Controller라는 이름으로 끝나느 클래스의 메소드이름은 상관없고 매개변수개수도 상관없이
+	호출만 되면 LoggingAdvice 클래스의 invoke 메소드가  호출됩니다. -->
+	<aop:config>
+		<aop:aspect id="traceAspect" ref="loggingAdvice">
+			<aop:pointcut id="publicMethod" expression="execution(public * com.pk.db..*Controller.*(..))"/>
+			<aop:around pointcut-ref="publicMethod" method="invoke"/>
+		</aop:aspect>
+	</aop:config>
+
+	<!-- chat 요청으로 이동할 때 로그인이 되어있지 않으면 로그인 페이지로 이동하도록 interceptor 생성 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/chat"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -76,4 +99,5 @@
 			path에는 클라이언트가 접속할 URL을 자유롭게 기재 -->
 		<websocket:mapping handler="chatHandler" path="/chat-ws"/>
 	</websocket:handlers>
+	
 </beans:beans>

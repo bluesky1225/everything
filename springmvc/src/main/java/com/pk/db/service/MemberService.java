@@ -7,6 +7,5 @@ import com.pk.db.domain.Member;
 public interface MemberService {
 	// 로그인 처리 메소드
 	public Member login(HttpServletRequest request);
-	// 로그아웃 처리 메소드
-	public void logout();
+
 }

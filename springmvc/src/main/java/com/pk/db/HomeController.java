@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,7 +61,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/chat", method = RequestMethod.GET)
 	public String chat(HttpServletRequest request) {
-		
 		// 뷰 이름을 리턴
 		return "chat";
 	}
@@ -140,13 +140,13 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(HttpServletRequest request) {
+	public String login(HttpServletRequest request, Model model) {
 		// 뷰의 이름을 리턴
 		return "login";
 	}
 	
-	//@Autowired
-	//private MemberServiceImpl memberServiceImpl;
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(HttpServletRequest request, Model model, RedirectAttributes attrs){
@@ -154,7 +154,6 @@ public class HomeController {
 		//	저장할 수 있는 Spring이 제공하는 클래스
 		
 		// 서비스의 메소드 호출
-		MemberService memberService = new MemberServiceImpl();
 		Member member = memberService.login(request);
 		
 		// 로그인 처리도 redirect로 이동
@@ -164,16 +163,34 @@ public class HomeController {
 			return "redirect:login";
 		} else {
 			// 로그인 성공이면 메인 페이지로 이동
+			
+			// 로그인이 안 되어서 채팅뷰로 이동하지 못 하고 로그인 하게 된 경우
+			//  채팅뷰로 이동하도록 해준다
+			HttpSession session = request.getSession();
+			String dest = (String)session.getAttribute("preCommand");
+			
+			// 이동할 URL이 있는지 확인하고 있으면 이동 및 세션 삭제
+			if(dest != null) {
+				// preCommand에 저장된 내용을 삭제 - 계속 남아서 문제를 발생 시킬 가능성이 있음
+				session.removeAttribute("preCommand");
+				
+				return "redirect:"+dest;
+			}
+			
+			// 로그인 성공이면 메인 페이지로 이동
 			return "redirect:./";
 		}
 		
 	}
-	
-	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logout(HttpServletRequest request, Model model) {
-	
 		
-		return "home";
+	@RequestMapping(value = "/logout", method = RequestMethod.GET) // POST OR GET
+	public String logout(HttpServletRequest request, HttpSession session) {	
+		
+		// 세션 초기화
+		session.invalidate();
+		// or session.removeAttribute("member");
+		
+		// 로그인과 로그아웃도 리다이렉트
+		return "redirect:./";
 	}
 }

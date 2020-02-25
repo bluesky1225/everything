@@ -9,8 +9,9 @@
 <title>상품 검색 결과</title>
 <link rel="stylesheet" href="./resources/css/item.css"/>
 </head>
-<body>
+<body align="center">
 	<h2 align='center'>상품 목록</h2>
+	<div id="scrollview" align="center">
 	<table border='1' align='center'>
 		<tr class='header'>
 			<th width='80'>ItemID</th>
@@ -30,14 +31,15 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+	</div>
+	<div>
 	<c:if test="${member == null}">
 	<a href="login">로그인</a><br/>
 	</c:if>
 	<c:if test="${member != null}">
 	${member.userid}님 <a href="logout">로그아웃</a><br/>
 	</c:if>
-
+	
 	<a href="insert">데이터 삽입</a><br/>
 	
 	<a href="chat">WebSocket을 이용한 채팅</a><br/>
@@ -57,7 +59,7 @@
 	<a href="item.xml">XML로 내려받기</a><br/>
 		
 	<div align="center" id="disp"></div>
-	
+	</div>
 	<script type="text/javascript" src="./resources/js/home.js"></script>
 </body>
 </html>
