@@ -35,7 +35,7 @@
 
 
 		<!-- Test / 테스트 라이브러리 버전으로 최근에는 4.12이상 사용해야함 -->
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 
 	</properties>
 
